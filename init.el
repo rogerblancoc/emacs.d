@@ -75,6 +75,9 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
+;; NOTE(roger): Store backup files (~file_name) in "backups" folder
+(setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
+
 ;; NOTE(roger): Purcell fun scratch message
 (setq-default initial-scratch-message
               (concat ";; Happy hacking, " user-login-name " - Emacs ♥ you!\n\n"))
@@ -152,4 +155,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
- 
