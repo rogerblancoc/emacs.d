@@ -16,6 +16,7 @@
 
 ;; NOTE(roger): Names of the packages needed from the repositories
 (setq package-list '(gruvbox-theme
+                     magit
                      fill-column-indicator))
 ;; NOTE(roger): Installs all the packages that are not installed yet
 (dolist (package package-list)
@@ -24,13 +25,13 @@
 
 ;; NOTE(roger): Tell Emacs where my lisp dir is and load the packages
 (add-to-list 'load-path "~/.emacs.d/lisp/")
-
+(setq custom-file "~/.emacs.d/lisp/custom.el")
 
 ;;; BASIC CUSTOMIZATION
 ;;; --------------------------------------------
 
 ;; NOTE(roger): Load lisp files
-(load "custom")
+(load custom-file)
 
 ;; NOTE(roger): Force Emacs to use UTF-8 encoding by default
 (prefer-coding-system 'utf-8)
