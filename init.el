@@ -16,7 +16,12 @@
 
 ;; NOTE(roger): Names of the packages needed from the repositories
 (setq package-list '(gruvbox-theme
+                     php-mode
+                     web-mode
                      magit
+                     diff-hl
+                     magit-gitflow
+                     hungry-delete
                      fill-column-indicator))
 ;; NOTE(roger): Installs all the packages that are not installed yet
 (dolist (package package-list)
@@ -34,10 +39,13 @@
 (load custom-file)
 
 ;; NOTE(roger): Force Emacs to use UTF-8 encoding by default
-(prefer-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
+;; TODO(roger): Check if this all of this is necesary
+(setq-default buffer-file-coding-system 'utf-8-unix)
+(setq-default default-buffer-file-coding-system 'utf-8-unix)
+(set-default-coding-systems 'utf-8-unix)
+(set-terminal-coding-system 'utf-8-unix)
+(set-keyboard-coding-system 'utf-8-unix)
+(prefer-coding-system 'utf-8-unix)
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
 ;; NOTE(roger): Maximize the screen at start-up
@@ -95,7 +103,7 @@
   (open-line 1)
   (next-line 1)
   (yank)
-)
+  )
 (global-set-key (kbd "C-c d") 'duplicate-line)
 
 ;; NOTE(roger): Replacement for the default buffer menu
@@ -105,42 +113,52 @@
 ;;; --------------------------------------------
 
 ;; NOTE(roger): List of programming modes
-(defvar programming-modes '(c++-mode c-mode emacs-lisp-mode sql-mode java-mode nxml-mode python-mode))
+(defvar programming-modes '(emacs-lisp-mode sql-mode java-mode php-mode web-mode))
 
 ;; NOTE(roger): Activate 80 Column line in certain modes
 ;; TODO(roger): Add more modes and try to use a variable instead of repeating the sentence
 (add-hook 'java-mode-hook 'fci-mode)
-(add-hook 'python-mode-hook 'fci-mode)
+(add-hook 'php-mode-hook 'fci-mode)
 (setq fci-rule-column 80)
 
 ;; NOTE(roger): Casey Muratori todo, note and imporant comment
- (setq fixme-modes programming-modes)
- (make-face 'font-lock-todo-face)
- (make-face 'font-lock-important-face)
- (make-face 'font-lock-note-face)
- (mapc (lambda (mode)
-         (font-lock-add-keywords
-          mode
-          '(("\\<\\(TODO\\)(\\w+):" 1 'font-lock-todo-face t)
-            ("\\<\\(IMPORTANT\\)(\\w+):" 1 'font-lock-important-face t)
-            ("\\<\\(NOTE\\)(\\w+):" 1 'font-lock-note-face t))))
-        fixme-modes)
- (modify-face 'font-lock-todo-face "Red" nil nil t nil t nil nil)
- (modify-face 'font-lock-important-face "Yellow" nil nil t nil t nil nil)
+(setq fixme-modes programming-modes)
+(make-face 'font-lock-todo-face)
+(make-face 'font-lock-important-face)
+(make-face 'font-lock-note-face)
+(mapc (lambda (mode)
+        (font-lock-add-keywords
+         mode
+         '(("\\<\\(TODO\\)(\\w+):" 1 'font-lock-todo-face t)
+           ("\\<\\(IMPORTANT\\)(\\w+):" 1 'font-lock-important-face t)
+           ("\\<\\(NOTE\\)(\\w+):" 1 'font-lock-note-face t))))
+      fixme-modes)
+(modify-face 'font-lock-todo-face "Red" nil nil t nil t nil nil)
+(modify-face 'font-lock-important-face "Yellow" nil nil t nil t nil nil)
 (modify-face 'font-lock-note-face "Dark Green" nil nil t nil t nil nil)
 
 ;;; XML MODE
 ;;; --------------------------------------------
 
 ;; NOTE(roger): Macro which tabs the document
+;; TODO(roger): Add the macro to the programming languages
 (add-hook 'nxml-mode-hook
-  (lambda ()
-    (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>"))))
+          (lambda ()
+            (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>"))))
 
 ;;; SQL MODE
 ;;; --------------------------------------------
 
 ;; NOTE(roger): Sets the product to MySQL
 (add-hook 'sql-mode-hook
-  (lambda()
-    (sql-set-product "mysql")))
+          (lambda()
+            (sql-set-product "mysql")))
+
+;; TODO(roger): Find a better place to put this
+;; TODO(roger): Auto start magit automatically of somesorts
+(add-hook 'magit-mode-hook 'global-diff-hl-mode)
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+
+(global-hungry-delete-mode)
+(global-set-key (kbd "C-c <backspace>") 'hungry-delete-backward)
+(global-set-key (kbd "C-c <deletechar>") 'hungry-delete-forward)
