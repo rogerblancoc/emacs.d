@@ -49,7 +49,7 @@
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
 ;; NOTE(roger): Maximize the screen at start-up
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(fullscreen . fullboth))
 ;; NOTE(roger): Remove the menu, tool and the scroll bar
 (menu-bar-mode -1)
 (tool-bar-mode -1)
