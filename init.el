@@ -20,7 +20,6 @@
                      web-mode
                      magit
                      diff-hl
-                     magit-gitflow
                      hungry-delete
                      fill-column-indicator))
 ;; NOTE(roger): Installs all the packages that are not installed yet
@@ -75,7 +74,8 @@
 (add-hook 'before-save-hook 'whitespace-cleanup)
 ;; NOTE(roger): Disable bell alarm
 (setq visible-bell t)
-
+;; NOTE(roger): Highlight the current line
+(global-hl-line-mode 1)
 ;; NOTE(roger): Better buffer autocomplete
 (ido-mode t)
 (setq ido-enable-flex-matching t)
@@ -109,6 +109,10 @@
 ;; NOTE(roger): Replacement for the default buffer menu
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+(global-hungry-delete-mode)
+(global-set-key (kbd "C-c <backspace>") 'hungry-delete-backward)
+(global-set-key (kbd "C-c <deletechar>") 'hungry-delete-forward)
+
 ;;; PROGRAMMING CUSTOMIZATION
 ;;; --------------------------------------------
 
@@ -137,12 +141,21 @@
 (modify-face 'font-lock-important-face "Yellow" nil nil t nil t nil nil)
 (modify-face 'font-lock-note-face "Dark Green" nil nil t nil t nil nil)
 
-;;; XML MODE
-;;; --------------------------------------------
-
 ;; NOTE(roger): Macro which tabs the document
-;; TODO(roger): Add the macro to the programming languages
-(add-hook 'nxml-mode-hook
+;; TODO(roger): Do it in one function
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>"))))
+(add-hook 'sql-mode-hook
+          (lambda ()
+            (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>"))))
+(add-hook 'java-mode-hook
+          (lambda ()
+            (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>"))))
+(add-hook 'php-mode-hook
+          (lambda ()
+            (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>"))))
+(add-hook 'web-mode-hook
           (lambda ()
             (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>"))))
 
@@ -154,11 +167,22 @@
           (lambda()
             (sql-set-product "mysql")))
 
-;; TODO(roger): Find a better place to put this
+;;; MAGIT MODE
+;;; --------------------------------------------
+
 ;; TODO(roger): Auto start magit automatically of somesorts
 (add-hook 'magit-mode-hook 'global-diff-hl-mode)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
-(global-hungry-delete-mode)
-(global-set-key (kbd "C-c <backspace>") 'hungry-delete-backward)
-(global-set-key (kbd "C-c <deletechar>") 'hungry-delete-forward)
+;;; WEB MODE
+;;; --------------------------------------------
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
