@@ -47,8 +47,9 @@
 (prefer-coding-system 'utf-8-unix)
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
-;; NOTE(roger): Open emacs as a fullscreen app
-(add-to-list 'default-frame-alist '(fullscreen . fullboth))
+;; NOTE(roger): Maximize the screen at start-up
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; NOTE(roger): Remove the menu, tool and the scroll bar
 (menu-bar-mode -1)
 (tool-bar-mode -1)
