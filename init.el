@@ -7,7 +7,7 @@
 
 ;; NOTE(roger): Add MELPA repository
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/"))
+             '("melpa" . "https://melpa.org/packages/"))
 
 (package-initialize)
 ;; NOTE(roger): Update the packages that are not up to date
