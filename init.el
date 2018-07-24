@@ -209,3 +209,10 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+;; NOTE(roger): Grep an expression inside PHP and TPL files
+;; TODO(roger): Add other similar functions for diferent types of files
+(defun php-grep (expression)
+  "Search recursively an expression inside files with .php and .tpl extension"
+  (interactive "sExpression to search: ")
+  (grep (concat "grep -rni '" expression "' --include \\*.php --include \\*.tpl .")))
