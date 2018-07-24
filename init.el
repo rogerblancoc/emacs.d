@@ -97,6 +97,7 @@
 
 ;; NOTE(roger): "C-c d" duplicates the line
 (defun duplicate-line()
+  "Duplicates the current line"
   (interactive)
   (move-beginning-of-line 1)
   (kill-line)1
