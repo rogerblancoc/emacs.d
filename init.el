@@ -193,6 +193,8 @@
 ;;; --------------------------------------------
 
 ;; TODO(roger): Auto start magit automatically of somesorts
+(global-set-key (kbd "C-x g") 'magit-status)
+
 (add-hook 'magit-mode-hook 'global-diff-hl-mode)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
