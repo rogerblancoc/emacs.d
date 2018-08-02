@@ -115,6 +115,12 @@
 (global-set-key (kbd "C-c <backspace>") 'hungry-delete-backward)
 (global-set-key (kbd "C-c <deletechar>") 'hungry-delete-forward)
 
+;; NOTE(roger): Swap keybindings for searching
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "C-M-s") 'isearch-forward)
+(global-set-key (kbd "C-M-r") 'isearch-backward)
+
 ;; NOTE(roger): Move the current line UP or DOWN
 (defun move-line-up ()
   "Move up the current line."
