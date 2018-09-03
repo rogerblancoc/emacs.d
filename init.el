@@ -100,6 +100,9 @@
 ;; NOTE(roger): Toggle between truncated lines and continuation lines
 (global-set-key "\C-c$" 'toggle-truncate-lines)
 
+;; NOTE(roger): Render html code in the current buffer
+(global-set-key (kbd "C-c h") 'shr-render-buffer)
+
 ;; NOTE(roger): "C-c d" duplicates the line
 (defun duplicate-line()
   "Duplicates the current line"
