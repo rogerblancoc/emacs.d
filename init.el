@@ -21,7 +21,8 @@
                      magit
                      diff-hl
                      hungry-delete
-                     fill-column-indicator))
+                     fill-column-indicator
+                     dired-sidebar))
 ;; NOTE(roger): Installs all the packages that are not installed yet
 (dolist (package package-list)
   (unless (package-installed-p package)
