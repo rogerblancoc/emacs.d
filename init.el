@@ -72,6 +72,9 @@
 (setq require-final-newline t)
 ;; NOTE(roger): Set default font
 (set-face-attribute 'default nil :font "Inconsolata-11")
+;; NOTE(roger): Set fallback font
+;; TODO(roger): Find the emoji range to limit the use of Symbola
+(set-fontset-font "fontset-default" '() "Symbola-11")
 ;; NOTE(roger): Before saving a document clean-up the whitespace
 (add-hook 'before-save-hook 'whitespace-cleanup)
 ;; NOTE(roger): Disable bell alarm
