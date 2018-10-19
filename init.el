@@ -155,6 +155,9 @@
 
 (global-set-key [(control shift down)]  'move-line-down)
 
+;; NOTE(roger): Toggles tree view of project directory
+(global-set-key (kbd "C-x t") 'dired-sidebar-toggle-sidebar)
+
 ;;; PROGRAMMING CUSTOMIZATION
 ;;; --------------------------------------------
 
