@@ -21,7 +21,8 @@
                      magit
                      diff-hl
                      hungry-delete
-                     fill-column-indicator))
+                     fill-column-indicator
+                     py-autopep8))
 ;; NOTE(roger): Installs all the packages that are not installed yet
 (dolist (package package-list)
   (unless (package-installed-p package)
@@ -233,3 +234,9 @@
   "Search recursively an expression inside files with .php and .tpl extension"
   (interactive "sExpression to search: ")
   (grep (concat "grep -rni '" expression "' --include \\*.php --include \\*.tpl .")))
+
+;;; PYTHON MODE
+;;; --------------------------------------------
+
+(require 'py-autopep8)
+(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
