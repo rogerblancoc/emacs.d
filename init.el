@@ -242,6 +242,6 @@
 
 ;;; PYTHON MODE
 ;;; --------------------------------------------
-
+;; TODO(roger): configure flycheck or another package to check syntaxis
 (require 'py-autopep8)
 (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
