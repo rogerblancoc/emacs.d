@@ -235,6 +235,12 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
+
+;(setq-local web-mode-markup-indent-offset n) ; web-mode, html tag in html file
+;(setq-local web-mode-css-indent-offset n) ; web-mode, css in html file
+(setq web-mode-code-indent-offset 2) ; web-mode, js code in html file
 
 ;; NOTE(roger): Grep an expression inside PHP and TPL files
 ;; TODO(roger): Add other similar functions for diferent types of files
