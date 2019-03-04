@@ -1,7 +1,7 @@
-elpa
-auto-save-list
-backups
+elpa/
+auto-save-list/
+backups/
 ido.last
-tramp
-server
+tramp/
+server/
 lisp/custom.el
