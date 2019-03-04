@@ -23,22 +23,24 @@
                      hungry-delete
                      fill-column-indicator
                      py-autopep8
-                     dired-sidebar))
+                     dired-sidebar
+                     auctex
+                     ))
 
 ;; NOTE(roger): Installs all the packages that are not installed yet
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
 
-;; NOTE(roger): Tell Emacs where my lisp dir is and load the packages
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+;; NOTE(roger): Tell Emacs where my custom.el file is
 (setq custom-file "~/.emacs.d/lisp/custom.el")
 
 ;;; BASIC CUSTOMIZATION
 ;;; --------------------------------------------
 
-;; NOTE(roger): Load lisp files
-(load custom-file)
+;; NOTE(roger): Load custom.el file if exists
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 ;; NOTE(roger): Force Emacs to use UTF-8 encoding by default
 ;; TODO(roger): Check if this all of this is necesary
@@ -73,9 +75,8 @@
 ;; NOTE(roger): Automatically add a new line at the end of the file
 (setq require-final-newline t)
 ;; NOTE(roger): Set default font
-(set-face-attribute 'default nil :font "Inconsolata-11")
+(set-face-attribute 'default nil :font "Hack-11")
 ;; NOTE(roger): Set fallback font
-;; TODO(roger): Find the emoji range to limit the use of Symbola
 (set-fontset-font "fontset-default" '() "Symbola-11")
 ;; NOTE(roger): Before saving a document clean-up the whitespace
 (add-hook 'before-save-hook 'whitespace-cleanup)
@@ -110,6 +111,7 @@
 (global-set-key (kbd "C-c h") 'shr-render-buffer)
 
 ;; NOTE(roger): "C-c d" duplicates the line
+;; TODO(roger): Be able to duplicate multiple lines
 (defun duplicate-line()
   "Duplicates the current line"
   (interactive)
@@ -136,6 +138,7 @@
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
 ;; NOTE(roger): Move the current line UP or DOWN
+;; TODO(roger): Be able to move multiple lines
 (defun move-line-up ()
   "Move up the current line."
   (interactive)
@@ -238,19 +241,26 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
 
-;(setq-local web-mode-markup-indent-offset n) ; web-mode, html tag in html file
-;(setq-local web-mode-css-indent-offset n) ; web-mode, css in html file
+(setq web-mode-markup-indent-offset 2) ; web-mode, html tag in html file
+(setq web-mode-css-indent-offset 2) ; web-mode, css in html file
 (setq web-mode-code-indent-offset 2) ; web-mode, js code in html file
+(setq web-mode-indent-style 2)
 
-;; NOTE(roger): Grep an expression inside PHP and TPL files
+;; NOTE(roger): Grep an expression inside specific file extensions
 ;; TODO(roger): Add other similar functions for diferent types of files
 (defun php-grep (expression)
   "Search recursively an expression inside files with .php and .tpl extension"
   (interactive "sExpression to search: ")
   (grep (concat "grep -rni '" expression "' --include \\*.php --include \\*.tpl .")))
 
+(defun js-grep (expression)
+  "Search recursively an expression inside files with .php and .tpl extension"
+  (interactive "sExpression to search: ")
+  (grep (concat "grep -rni '" expression "' --include \\*.html --include \\*.js .")))
+
 ;;; PYTHON MODE
 ;;; --------------------------------------------
+
 ;; TODO(roger): configure flycheck or another package to check syntaxis
 (require 'py-autopep8)
 (add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
