@@ -137,6 +137,10 @@
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
+;; NOTE(roger): Swap keybindings for replacing
+(global-set-key (kbd "M-%") 'query-replace-regexp)
+(global-set-key (kbd "C-M-%") 'query-replace)
+
 ;; NOTE(roger): Move the current line UP or DOWN
 ;; TODO(roger): Be able to move multiple lines
 (defun move-line-up ()
