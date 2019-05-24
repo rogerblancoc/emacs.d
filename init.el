@@ -169,12 +169,13 @@
 ;;; --------------------------------------------
 
 ;; NOTE(roger): List of programming modes
-(defvar programming-modes '(emacs-lisp-mode sql-mode java-mode php-mode web-mode))
+(defvar programming-modes '(emacs-lisp-mode sql-mode java-mode php-mode web-mode python-mode c-mode))
 
 ;; NOTE(roger): Activate 80 Column line in certain modes
 ;; TODO(roger): Add more modes and try to use a variable instead of repeating the sentence
 (add-hook 'java-mode-hook 'fci-mode)
 (add-hook 'php-mode-hook 'fci-mode)
+(add-hook 'c-mode-hook 'fci-mode)
 (setq fci-rule-column 80)
 
 ;; NOTE(roger): Casey Muratori todo, note and imporant comment
@@ -208,6 +209,9 @@
           (lambda ()
             (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>"))))
 (add-hook 'web-mode-hook
+          (lambda ()
+            (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>"))))
+(add-hook 'c-mode-hook
           (lambda ()
             (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>"))))
 
