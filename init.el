@@ -25,6 +25,7 @@
                      py-autopep8
                      dired-sidebar
                      auctex
+                     buffer-move
                      ))
 
 ;; NOTE(roger): Installs all the packages that are not installed yet
@@ -164,6 +165,11 @@
 
 ;; NOTE(roger): Toggles tree view of project directory
 (global-set-key (kbd "C-x t") 'dired-sidebar-toggle-sidebar)
+
+(global-set-key (kbd "C-c <up>") 'buf-move-up)
+(global-set-key (kbd "C-c <down>") 'buf-move-down)
+(global-set-key (kbd "C-c <left>") 'buf-move-left)
+(global-set-key (kbd "C-c <right>") 'buf-move-right)
 
 ;;; PROGRAMMING CUSTOMIZATION
 ;;; --------------------------------------------
