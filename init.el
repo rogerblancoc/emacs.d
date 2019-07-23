@@ -254,6 +254,7 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
 
 (setq web-mode-markup-indent-offset 2) ; web-mode, html tag in html file
 (setq web-mode-css-indent-offset 2) ; web-mode, css in html file
