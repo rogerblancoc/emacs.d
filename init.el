@@ -166,6 +166,7 @@
 ;; NOTE(roger): Toggles tree view of project directory
 (global-set-key (kbd "C-x t") 'dired-sidebar-toggle-sidebar)
 
+;; NOTE(roger): Shift arround the buffers with the arrow keys
 (global-set-key (kbd "C-c <up>") 'buf-move-up)
 (global-set-key (kbd "C-c <down>") 'buf-move-down)
 (global-set-key (kbd "C-c <left>") 'buf-move-left)
