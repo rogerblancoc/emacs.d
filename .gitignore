@@ -5,3 +5,4 @@ ido.last
 tramp/
 server/
 lisp/custom.el
+transient/
