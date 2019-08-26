@@ -257,16 +257,15 @@
 (setq web-mode-indent-style 2)
 
 ;; NOTE(roger): Grep an expression inside specific file extensions
-;; TODO(roger): Add other similar functions for diferent types of files
-(defun php-grep (expression)
-  "Search recursively an expression inside files with .php and .tpl extension"
+(defun web-grep (expression)
+  "Search recursively an expression inside files related to web dev"
   (interactive "sExpression to search: ")
-  (grep (concat "grep -rni '" expression "' --include \\*.php --include \\*.tpl .")))
+  (grep (concat "grep -rniE '" expression "' --include \\*.php --include \\*.tpl .")))
 
-(defun js-grep (expression)
-  "Search recursively an expression inside files with .php and .tpl extension"
+(defun super-grep (expression)
+  "Search recursively an expression"
   (interactive "sExpression to search: ")
-  (grep (concat "grep -rni '" expression "' --include \\*.html --include \\*.js .")))
+  (grep (concat "grep -rniE '" expression "' .")))
 
 ;;; PYTHON MODE
 ;;; --------------------------------------------
