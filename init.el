@@ -26,6 +26,7 @@
                      dired-sidebar
                      auctex
                      buffer-move
+                     browse-kill-ring
                      ))
 
 ;; NOTE(roger): Installs all the packages that are not installed yet
@@ -171,6 +172,10 @@
 (global-set-key (kbd "C-c <down>") 'buf-move-down)
 (global-set-key (kbd "C-c <left>") 'buf-move-left)
 (global-set-key (kbd "C-c <right>") 'buf-move-right)
+
+;; NOTE(roger): open new buffer with list of past killed rings
+;; TODO(roger): find a more up to date package
+(global-set-key (kbd "C-c y") 'browse-kill-ring)
 
 ;;; PROGRAMMING CUSTOMIZATION
 ;;; --------------------------------------------
