@@ -206,26 +206,18 @@
 (modify-face 'font-lock-important-face "Yellow" nil nil t nil t nil nil)
 (modify-face 'font-lock-note-face "Dark Green" nil nil t nil t nil nil)
 
-;; NOTE(roger): Macro which tabs the document
-;; TODO(roger): Do it in one function
-(add-hook 'emacs-lisp-mode-hook
-          (lambda ()
-            (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>"))))
-(add-hook 'sql-mode-hook
-          (lambda ()
-            (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>"))))
-(add-hook 'java-mode-hook
-          (lambda ()
-            (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>"))))
-(add-hook 'php-mode-hook
-          (lambda ()
-            (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>"))))
-(add-hook 'web-mode-hook
-          (lambda ()
-            (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>"))))
-(add-hook 'c-mode-hook
-          (lambda ()
-            (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>"))))
+;; NOTE(roger): Macro which properly indents the buffer
+(defun indent-buffer ()
+  "Properly indents the buffer"
+  (interactive)
+  (local-set-key (kbd "<C-tab>") (kbd "C-x h <tab>")))
+
+(add-hook 'emacs-lisp-mode-hook 'indent-buffer)
+(add-hook 'sql-mode-hook 'indent-buffer)
+(add-hook 'java-mode-hook 'indent-buffer)
+(add-hook 'php-mode-hook 'indent-buffer)
+(add-hook 'web-mode-hook 'indent-buffer)
+(add-hook 'c-mode-hook 'indent-buffer)
 
 ;;; SQL MODE
 ;;; --------------------------------------------
