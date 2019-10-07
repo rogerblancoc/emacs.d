@@ -181,13 +181,14 @@
 ;;; --------------------------------------------
 
 ;; NOTE(roger): List of programming modes
-(defvar programming-modes '(emacs-lisp-mode sql-mode java-mode php-mode web-mode python-mode c-mode))
+(defvar programming-modes '(emacs-lisp-mode sql-mode java-mode php-mode web-mode python-mode c-mode js-mode))
 
 ;; NOTE(roger): Activate 80 Column line in certain modes
 ;; TODO(roger): Add more modes and try to use a variable instead of repeating the sentence
 (add-hook 'java-mode-hook 'fci-mode)
 (add-hook 'php-mode-hook 'fci-mode)
 (add-hook 'c-mode-hook 'fci-mode)
+(add-hook 'js-mode-hook 'fci-mode)
 (setq fci-rule-column 80)
 
 ;; NOTE(roger): Casey Muratori todo, note and imporant comment
@@ -218,6 +219,7 @@
 (add-hook 'php-mode-hook 'indent-buffer)
 (add-hook 'web-mode-hook 'indent-buffer)
 (add-hook 'c-mode-hook 'indent-buffer)
+(add-hook 'js-mode-hook 'indent-buffer)
 
 ;;; SQL MODE
 ;;; --------------------------------------------
@@ -244,9 +246,6 @@
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
 
 (setq web-mode-engines-alist '(("smarty" . "\\.tpl\\'")))
 
@@ -254,6 +253,9 @@
 (setq web-mode-css-indent-offset 2) ; web-mode, css in html file
 (setq web-mode-code-indent-offset 2) ; web-mode, js code in html file
 (setq web-mode-indent-style 2)
+
+;; NOTE(roger): set indentation level to 2 for js-mode
+(setq js-indent-level 2)
 
 ;; NOTE(roger): Grep an expression inside specific file extensions
 (defun web-grep (expression)
