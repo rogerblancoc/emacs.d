@@ -104,6 +104,10 @@
 (setq-default initial-scratch-message
               (concat ";; Happy hacking, " user-login-name " - Emacs ♥ you!\n\n"))
 
+;; NOTE(roger): Activated macros for converting to Lower or Upper case the region
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
 ;;; GLOBAL MACROS
 ;;; --------------------------------------------
 
