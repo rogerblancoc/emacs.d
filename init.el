@@ -283,4 +283,7 @@
 ;;; AUCTEX MODE
 ;;; --------------------------------------------
 
-(setq TeX-view-program-selection '((output-pdf "Zathura")))
+;TODO(roger): check if it's necesary for Linux, on windows I'm certain.
+(if (eq system-type 'gnu/linux)
+    (setq TeX-view-program-selection '((output-pdf "Zathura")))
+)
