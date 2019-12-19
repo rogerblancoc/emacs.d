@@ -262,7 +262,7 @@
 (defun web-grep (expression)
   "Search recursively an expression inside files related to web dev"
   (interactive "sExpression to search: ")
-  (grep (concat "grep -rniE '" expression "' --include \\*.php --include \\*.tpl .")))
+  (grep (concat "grep -rniE '" expression "' --include \\*.php --include \\*.tpl --include \\*.js . ")))
 
 (defun super-grep (expression)
   "Search recursively an expression"
