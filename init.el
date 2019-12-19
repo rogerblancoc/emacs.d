@@ -27,6 +27,7 @@
                      auctex
                      buffer-move
                      browse-kill-ring
+                     markdown-mode
                      ))
 
 ;; NOTE(roger): Installs all the packages that are not installed yet
