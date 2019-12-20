@@ -108,6 +108,12 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
+;; NOTE(roger): Enable mode for stopping in between camelCase words
+(global-subword-mode 1)
+
+;; NOTE(roger): Enable mode for inserting the right bracket automatically
+(electric-pair-mode 1)
+
 ;;; GLOBAL MACROS
 ;;; --------------------------------------------
 
