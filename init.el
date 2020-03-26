@@ -293,3 +293,10 @@
 (if (eq system-type 'gnu/linux)
     (setq TeX-view-program-selection '((output-pdf "Zathura")))
 )
+
+;;; MARKDOWN MODE
+;;; --------------------------------------------
+(setq markdown-command
+      (concat
+       "pandoc"
+       " --from=markdown --to=html")) ;; https://leanpub.com/markdown-mode/read#configuring-markdown
