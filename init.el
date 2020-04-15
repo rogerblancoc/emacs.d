@@ -204,19 +204,24 @@
 
 ;; NOTE(roger): Casey Muratori todo, note and imporant comment
 (setq fixme-modes programming-modes)
-(make-face 'font-lock-todo-face)
-(make-face 'font-lock-important-face)
 (make-face 'font-lock-note-face)
+(make-face 'font-lock-todo-face)
+(make-face 'font-lock-docs-face)
+(make-face 'font-lock-important-face)
 (mapc (lambda (mode)
         (font-lock-add-keywords
          mode
-         '(("\\<\\(TODO\\)(\\w+):" 1 'font-lock-todo-face t)
+         '(
+           ("\\<\\(NOTE\\)(\\w+):" 1 'font-lock-note-face t)
+           ("\\<\\(TODO\\)(\\w+):" 1 'font-lock-todo-face t)
+           ("\\<\\(DOCS\\)(\\w+):" 1 'font-lock-docs-face t)
            ("\\<\\(IMPORTANT\\)(\\w+):" 1 'font-lock-important-face t)
-           ("\\<\\(NOTE\\)(\\w+):" 1 'font-lock-note-face t))))
+           )))
       fixme-modes)
-(modify-face 'font-lock-todo-face "Red" nil nil t nil t nil nil)
-(modify-face 'font-lock-important-face "Yellow" nil nil t nil t nil nil)
 (modify-face 'font-lock-note-face "Dark Green" nil nil t nil t nil nil)
+(modify-face 'font-lock-todo-face "Red" nil nil t nil t nil nil)
+(modify-face 'font-lock-docs-face "Medium Blue" nil nil t nil t nil nil)
+(modify-face 'font-lock-important-face "Yellow" nil nil t nil t nil nil)
 
 ;; NOTE(roger): Macro which properly indents the buffer
 (defun indent-buffer ()
