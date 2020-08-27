@@ -284,6 +284,27 @@
   (interactive "sExpression to search: ")
   (grep (concat "grep -rniE '" expression "' .")))
 
+;;; PHP MODE
+;;; --------------------------------------------
+
+;; NOTE(roger): due to some bug with web-mode some .php file is not getting the correct mode, so I'm forcing it
+(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+
+;; NOTE(roger): When pressing F1 while standing on a symbol quickly look up in the documentation online the meaning
+(add-hook 'php-mode-hook 'my-php-mode-stuff)
+
+(defun my-php-mode-stuff ()
+  (local-set-key (kbd "C-c f") 'my-php-symbol-lookup))
+
+(defun my-php-symbol-lookup ()
+  (interactive)
+  (let ((symbol (symbol-at-point)))
+    (if (not symbol)
+        (message "No symbol at point.")
+
+      (browse-url (concat "http://php.net/manual-lookup.php?pattern="
+                          (symbol-name symbol))))))
+
 ;;; PYTHON MODE
 ;;; --------------------------------------------
 
