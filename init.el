@@ -188,6 +188,17 @@
 ;; TODO(roger): find a more up to date package
 (global-set-key (kbd "C-c y") 'browse-kill-ring)
 
+;; NOTE(roger): Disabled prior, next, home and end keys and ctrl combinations
+(global-unset-key (kbd "<prior>"))
+(global-unset-key (kbd "<next>"))
+(global-unset-key (kbd "<home>"))
+(global-unset-key (kbd "<end>"))
+
+(global-unset-key (kbd "<C-prior>"))
+(global-unset-key (kbd "<C-next>"))
+(global-unset-key (kbd "<C-home>"))
+(global-unset-key (kbd "<C-end>"))
+
 ;;; PROGRAMMING CUSTOMIZATION
 ;;; --------------------------------------------
 
