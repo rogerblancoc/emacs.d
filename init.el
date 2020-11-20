@@ -326,10 +326,15 @@
 ;;; AUCTEX MODE
 ;;; --------------------------------------------
 
-;TODO(roger): check if it's necesary for Linux, on windows I'm certain.
+;; TODO(roger): check if it's necesary for Linux, on windows I'm certain.
 (if (eq system-type 'gnu/linux)
-    (setq TeX-view-program-selection '((output-pdf "Zathura")))
-)
+    (setq TeX-view-program-selection '((output-pdf "Zathura"))))
+
+;; NOTE(roger): Bind TeX-command-master (C-c C-c) to always execute LaTeX command
+;; TODO(roger): Define a new wrapper function so set this variable dynamically to
+;; be able to use the other options in the original command like this answer suggests
+;; (https://stackoverflow.com/q/14664829), although the other options are not used
+(setq TeX-command-force "LaTeX")
 
 ;;; MARKDOWN MODE
 ;;; --------------------------------------------
