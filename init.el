@@ -199,6 +199,12 @@
 (global-unset-key (kbd "<C-home>"))
 (global-unset-key (kbd "<C-end>"))
 
+;; NOTE(roger): opens agenda document
+(defun agenda ()
+  "Open agenda.org document located in ~/dev/agenda"
+  (interactive)
+  (find-file "~/dev/agenda/agenda.org"))
+
 ;;; PROGRAMMING CUSTOMIZATION
 ;;; --------------------------------------------
 
