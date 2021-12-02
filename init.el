@@ -211,6 +211,7 @@
 (add-hook 'php-mode-hook 'fci-mode)
 (add-hook 'c-mode-hook 'fci-mode)
 (add-hook 'js-mode-hook 'fci-mode)
+(add-hook 'org-mode-hook 'fci-mode)
 (setq fci-rule-column 80)
 
 ;; NOTE(roger): Casey Muratori todo, note and imporant comment
@@ -342,3 +343,9 @@
       (concat
        "pandoc"
        " --from=markdown --to=html")) ;; https://leanpub.com/markdown-mode/read#configuring-markdown
+
+;;; ORG MODE
+;;; --------------------------------------------
+
+;; NOTE(roger): start with headlines folded
+(setq org-startup-folded t)
