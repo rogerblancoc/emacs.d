@@ -351,6 +351,9 @@
 ;; (https://stackoverflow.com/q/14664829), although the other options are not used
 (setq TeX-command-force "LaTeX")
 
+;; NOTE(roger): Save file automatically before compiling
+(setq TeX-save-query nil)
+
 ;;; MARKDOWN MODE
 ;;; --------------------------------------------
 (setq markdown-command
