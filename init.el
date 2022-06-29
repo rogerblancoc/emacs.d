@@ -255,6 +255,14 @@
 (add-hook 'c-mode-hook 'indent-buffer)
 (add-hook 'js-mode-hook 'indent-buffer)
 
+;; NOTE(roger): Autoinsert template when creating a file with specific extension
+(auto-insert-mode)
+(setq auto-insert-directory "~/.emacs.d/templates/")
+(setq auto-insert-query nil)
+
+(define-auto-insert "\.tex" "latex-template.tex") ; Template for LaTeX files
+(define-auto-insert "\.php" "php-template.php") ; Template for PHP files
+
 ;;; SQL MODE
 ;;; --------------------------------------------
 
