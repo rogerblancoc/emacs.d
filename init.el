@@ -21,7 +21,6 @@
                      magit
                      diff-hl
                      hungry-delete
-                     fill-column-indicator
                      py-autopep8
                      dired-sidebar
                      auctex
@@ -213,12 +212,10 @@
 
 ;; NOTE(roger): Activate 80 Column line in certain modes
 ;; TODO(roger): Add more modes and try to use a variable instead of repeating the sentence
-(add-hook 'java-mode-hook 'fci-mode)
-(add-hook 'php-mode-hook 'fci-mode)
-(add-hook 'c-mode-hook 'fci-mode)
-(add-hook 'js-mode-hook 'fci-mode)
-(add-hook 'org-mode-hook 'fci-mode)
-(setq fci-rule-column 80)
+(add-hook 'java-mode-hook 'display-fill-column-indicator-mode)
+(add-hook 'php-mode-hook 'display-fill-column-indicator-mode)
+(add-hook 'c-mode-hook 'display-fill-column-indicator-mode)
+(add-hook 'js-mode-hook 'display-fill-column-indicator-mode)
 
 ;; NOTE(roger): Casey Muratori todo, note and imporant comment
 (setq fixme-modes programming-modes)
