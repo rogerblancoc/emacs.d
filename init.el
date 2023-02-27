@@ -361,5 +361,23 @@
 ;;; ORG MODE
 ;;; --------------------------------------------
 
+;; NOTE(roger): set global shortcut for org-agenda
+(global-set-key "\C-ca" 'org-agenda)
+;; NOTE(roger): set agenda files
+(setq org-agenda-files (list "~/dev/agenda/agenda.org"))
+;; NOTE(roger): When marking a task as DONE promp for a note
+(setq org-log-done 'note)
+;; NOTE(roger): Set TODO keywords
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+        (sequene "WAITING(w)" "|")
+        (sequence "|" "CANCELED(c)")))
+;; NOTE(roger): Set TAGs keywords
+(setq org-tag-alist '(("GESTIO" . ?g) ("EKON" . ?e) ("WIKI" . ?w)))
+;; NOTE(roger): Set hook for fill-column-indicator mode
+(add-hook 'org-mode-hook 'display-fill-column-indicator-mode)
+;; NOTE(roger): Right-align tags at column 80
+(setq org-tags-column -80)
+
 ;; NOTE(roger): start with headlines folded
 (setq org-startup-folded t)
