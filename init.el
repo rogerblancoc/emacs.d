@@ -91,8 +91,6 @@
 ;; NOTE(roger): Better buffer autocomplete
 (ido-mode t)
 (setq ido-enable-flex-matching t)
-;; NOTE(roger): Disable truncate lines and enable continuation lines
-(setq-default truncate-lines nil)
 
 ;; NOTE(roger): Better buffer names
 (require 'uniquify)
