@@ -27,6 +27,8 @@
                      buffer-move
                      browse-kill-ring
                      markdown-mode
+                     flycheck
+                     company
                      ))
 
 ;; NOTE(roger): Installs all the packages that are not installed yet
@@ -259,6 +261,12 @@
 
 (define-auto-insert "\.tex" "latex-template.tex") ; Template for LaTeX files
 (define-auto-insert "\.php" "php-template.php") ; Template for PHP files
+
+;; NOTE(roger): Enable Flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; NOTE(roger): Enable Company Mode
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;;; SQL MODE
 ;;; --------------------------------------------
