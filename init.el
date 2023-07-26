@@ -37,7 +37,7 @@
     (package-install package)))
 
 ;; NOTE(roger): Tell Emacs where my custom.el file is
-(setq custom-file "~/.emacs.d/lisp/custom.el")
+(setq custom-file "~/.config/emacs/lisp/custom.el")
 
 ;;; BASIC CUSTOMIZATION
 ;;; --------------------------------------------
