@@ -79,9 +79,7 @@
 ;; NOTE(roger): Automatically add a new line at the end of the file
 (setq require-final-newline t)
 ;; NOTE(roger): Set default font
-(set-face-attribute 'default nil :font "Hack-11")
-;; NOTE(roger): Set fallback font
-(set-fontset-font "fontset-default" '() "Symbola-11")
+(set-face-attribute 'default nil :font "Hack Nerd Font-11")
 ;; NOTE(roger): Before saving a document clean-up the whitespace
 (add-hook 'before-save-hook 'whitespace-cleanup)
 ;; NOTE(roger): Disable bell alarm
