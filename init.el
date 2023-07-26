@@ -67,7 +67,7 @@
 ;; NOTE(roger): Hide the start-up message
 (setq inhibit-startup-message t)
 ;; NOTE(roger): Load Gruvbox theme
-(load-theme 'gruvbox' t)
+(load-theme 'gruvbox-dark-hard' t)
 ;; NOTE(roger): Enable line numbers globally
 (global-linum-mode t)
 ;; NOTE(roger): Enable column numbers globally
